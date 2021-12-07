@@ -1,6 +1,6 @@
 
 :root {
-    --main-bg: #A1AAB5;
+    --main-bg: #555555;
     --main-color: #000000;
 }
 
@@ -13,11 +13,11 @@ html, body {
 button {
     width: 60%;
     color: #DDDDDD;
-    background: black;
+    background: #202020;
 }
 
 .block {
-    background: #999;
+    background: #A1AAB5;
     width: 65vh;
     font-size: 2.5vh;
     margin: auto;
@@ -26,7 +26,10 @@ button {
 }
 
 .response {
-    max-height: 10em;
+    font-size: 0.7em;
+    white-space: pre-wrap;
+    color: #AA3333;
+    max-height: 30em;
     overflow-y: scroll;
 }
 
