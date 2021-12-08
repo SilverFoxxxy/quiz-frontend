@@ -47,4 +47,11 @@ async function get_ratings() {
     document.getElementById('rating_res').innerHTML = JSON.stringify(res, null, '\t');
 }
 
-
+async function set_score() {
+    let user_nm = document.getElementById('user_nm4').value;
+    let pswd = document.getElementById('user_passwd4').value;
+    let strjson = document.getElementById('score_info').value;
+    let nowjson = JSON.parse(strjson);
+    let res = await req_set_score(user_nm, pswd, nowjson);
+    document.getElementById('set_score_res').innerHTML = JSON.stringify(res, null, '\t');
+}

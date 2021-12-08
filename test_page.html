@@ -113,6 +113,39 @@
   <div class="response" id="login_res"></div>
 
   <br><hr><br>
+
+  Пример:
+  <div style="white-space: pre-wrap; font-size: 0.6em;">
+{
+  "scores": [
+    {
+      "question_id": 1,
+      "score": 1
+    },
+    {
+      "question_id": 2,
+      "score": 1
+    },
+    {
+      "question_id": 3,
+      "score": 1
+    }
+  ]
+}
+  </div>
+  <br>
+  Введи информацию о баллах как в примере:<br>
+  <textarea class="big_input" id="score_info" cols="40"></textarea>
+  <br>
+  Логин:<br>
+  <input type="text" id="user_nm4">
+  <br>
+  <br>
+  Пароль:<br>
+  <input type="password" id="user_passwd4">
+  <button onclick="set_score()">Загрузить баллы на сервер</button>
+  <div class="response" id="set_score_res"></div>
+
 </div>
 <br><br>
 

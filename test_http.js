@@ -32,9 +32,6 @@ async function send_req(req_json) {
 }
 
 async function digestMessage(message) {
-  if (message.length == 0) {
-    return "abrakadabra";
-  }
   const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);           // hash the message
   const hashArray = Array.from(new Uint8Array(hashBuffer));                     // convert buffer to byte array
@@ -42,11 +39,10 @@ async function digestMessage(message) {
   return hashHex;
 }
 
-function calc_hash(str) {
+async function calc_hash(str) {
     /*jshint bitwise:false */
-    let n = str.length;
     let salt = "my_salt_4_quiz";
-    return digestMessage(str + salt);
+    return digestMessage(String(str) + salt);
 }
 
 async function req_add_round(round_json) {
@@ -93,24 +89,40 @@ async function req_get_rating_table() {
 }
 
 async function req_add_user(user_nm, pswd) {
-    hash = calc_hash(pswd);
+    let hash = await calc_hash(pswd);
     let req_json = {
         type: "add_user",
         user_nm: user_nm,
-        pswd: pswd
+        pswd: hash
     };
     let res_json = send_req(req_json);
     return res_json;
 }
 
 async function req_login(user_nm, pswd) {
-    hash = calc_hash(pswd);
+    let hash = await calc_hash(pswd);
     let req_json = {
         type: "login",
         user_nm: user_nm,
-        pswd: pswd
+        pswd: hash
     };
     let res_json = send_req(req_json);
     return res_json;
 }
+
+async function req_set_score(user_nm, pswd, now_json) {
+    // calc_hash(pswd);
+    hash = await calc_hash(pswd);
+    // let req_json = round_json;
+    let req_json = {
+        type: "set_score",
+        user_nm: user_nm,
+        pswd: hash,
+        scores: now_json["scores"]
+    };
+    req_json["type"] = "set_score";
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
 
