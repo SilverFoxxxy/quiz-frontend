@@ -35,7 +35,7 @@ async function add_user() {
     document.getElementById('add_user_res').innerHTML = JSON.stringify(res, null, '\t');
 }
 
-async function add_user() {
+async function login() {
     let user_nm = document.getElementById('user_nm2').value;
     let pswd1 = document.getElementById('user_passwd3').value;
     let res = await req_login(user_nm, pswd1);

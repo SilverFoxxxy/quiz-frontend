@@ -32,6 +32,9 @@ async function send_req(req_json) {
 }
 
 async function digestMessage(message) {
+  if (message.length == 0) {
+    return "abrakadabra";
+  }
   const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);           // hash the message
   const hashArray = Array.from(new Uint8Array(hashBuffer));                     // convert buffer to byte array
@@ -94,7 +97,7 @@ async function req_add_user(user_nm, pswd) {
     let req_json = {
         type: "add_user",
         user_nm: user_nm,
-        pswd: hash
+        pswd: pswd
     };
     let res_json = send_req(req_json);
     return res_json;
@@ -105,7 +108,7 @@ async function req_login(user_nm, pswd) {
     let req_json = {
         type: "login",
         user_nm: user_nm,
-        pswd: hash
+        pswd: pswd
     };
     let res_json = send_req(req_json);
     return res_json;
