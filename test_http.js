@@ -42,7 +42,7 @@ async function digestMessage(message) {
 function calc_hash(str) {
     /*jshint bitwise:false */
     let n = str.length;
-    let salt = "my_magic_salt_4_great_soup";
+    let salt = "my_salt_4_quiz";
     return digestMessage(str + salt);
 }
 
@@ -84,6 +84,28 @@ async function req_get_question_list(round_id) {
 async function req_get_rating_table() {
     let req_json = {
         type: "get_rating_table"
+    };
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
+async function req_add_user(user_nm, pswd) {
+    hash = calc_hash(pswd);
+    let req_json = {
+        type: "add_user",
+        user_nm: user_nm,
+        pswd: hash
+    };
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
+async function req_login(user_nm, pswd) {
+    hash = calc_hash(pswd);
+    let req_json = {
+        type: "login",
+        user_nm: user_nm,
+        pswd: hash
     };
     let res_json = send_req(req_json);
     return res_json;

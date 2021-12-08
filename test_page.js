@@ -23,3 +23,28 @@ async function del_round() {
     let res = await req_del_round(round_id);
     document.getElementById('del_round_res').innerHTML = JSON.stringify(res, null, '\t');
 }
+
+async function add_user() {
+    let user_nm = document.getElementById('user_nm1').value;
+    let pswd1 = document.getElementById('user_passwd1').value;
+    let pswd2 = document.getElementById('user_passwd2').value;
+    if (pswd1 != pswd2) {
+        alert("Пароли не совпадают");
+    }
+    let res = await req_add_user(user_nm, pswd1);
+    document.getElementById('add_user_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
+async function add_user() {
+    let user_nm = document.getElementById('user_nm2').value;
+    let pswd1 = document.getElementById('user_passwd3').value;
+    let res = await req_login(user_nm, pswd1);
+    document.getElementById('login_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
+async function get_ratings() {
+    let res = await req_get_rating_table();
+    document.getElementById('rating_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
+

@@ -78,12 +78,39 @@
 
   <br><hr><br>
 
-  <button>Показать таблицу рейтинга</button>
-  <div class="response" id="rating"></div>
+  // Можно юзать, чтобы смотреть всех пользователей<br>
+  <button onclick="get_ratings()">Показать таблицу рейтинга</button>
+  <div class="response" id="rating_res"></div>
 
   <br><hr><br>
 
-  <br><br><br>
+  <big><u> Регистрация </u></big> <br>
+  Логин:<br>
+  <input type="text" id="user_nm1">
+  <br>
+  <br>
+  Пароль:<br>
+  <input type="password" id="user_passwd1">
+  <br>
+  <br>
+  Пароль ещё раз:<br>
+  <input type="password" id="user_passwd2">
+  <button onclick="add_user()">Зарегистрироваться</button>
+  <div class="response" id="add_user_res"></div>
+
+  <br><hr><br>
+
+  <big><u> Вход </u></big> <br>
+  Логин:<br>
+  <input type="text" id="user_nm2">
+  <br>
+  <br>
+  Пароль:<br>
+  <input type="password" id="user_passwd3">
+  <button onclick="login()">Войти</button>
+  <div class="response" id="login_res"></div>
+
+  <br><hr><br>
 </div>
 <br><br>
 
