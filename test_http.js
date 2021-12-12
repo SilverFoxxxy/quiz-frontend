@@ -2,7 +2,7 @@
 // const server = 'https://45.143.93.51/';
 // const server = 'http://45.143.93.51/';
 // const server = 'localhost:8080/';
-const server = 'https://letters-reader2.tk/query2/';
+const server = 'https://quiz-game.cf/query2/';
 
 async function send_req(req_json) {
     console.log(JSON.stringify(req_json));
