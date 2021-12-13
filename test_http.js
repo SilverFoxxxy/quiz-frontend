@@ -63,9 +63,10 @@ async function req_del_round(round_id) {
     return res_json;
 }
 
-async function req_get_round_list() {
+async function req_get_round_list(user_nm) {
     let req_json = {
-        type: "get_round_list"
+        type: "get_round_list",
+        user_nm: user_nm
     };
     let res_json = send_req(req_json);
     return res_json;
@@ -88,6 +89,24 @@ async function req_get_rating_table() {
     return res_json;
 }
 
+async function req_get_round_user_score(user_id, round_id) {
+    let req_json = {
+        type: "get_round_user_score",
+        user_id: user_id,
+        round_id: round_id
+    };
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
+async function req_get_users() {
+    let req_json = {
+        type: "get_users"
+    };
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
 async function req_add_user(user_nm, pswd) {
     let hash = await calc_hash(pswd);
     let req_json = {
@@ -95,6 +114,16 @@ async function req_add_user(user_nm, pswd) {
         user_nm: user_nm,
         pswd: hash
     };
+    let res_json = send_req(req_json);
+    return res_json;
+}
+
+async function req_del_user(user_nm) {
+    // calc_hash(pswd);
+    let req_json = {
+      type: "del_user",
+      user_nm: user_nm
+    }
     let res_json = send_req(req_json);
     return res_json;
 }

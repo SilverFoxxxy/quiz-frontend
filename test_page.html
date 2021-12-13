@@ -27,6 +27,8 @@
   <img src="https://letters-reader2.tk/quiz/img/test.jpg" alt="test img" width="200">
   <br><hr><br>
 
+  // опционально: user_nm, баллы которого хотим посмотреть:<br>
+  <input type="text" id="user_nm_rs"><br>
   <button onclick="show_rounds()">Показать раунды</button>
   <div class="response" id="round_list"></div>
 
@@ -83,11 +85,29 @@
   <input type="text" id="del_round_id"><br>
   <button onclick="del_round()">Удалить раунд</button>
   <div class="response" id="del_round_res"></div>
+  
+  <br><hr><br>
+
+  <big><u> Баллы за вопросы в раунде </u></big> <br>
+  user_id:<br>
+  <input type="text" id="user_id_10">
+  <br>
+  <br>
+  round_id:<br>
+  <input type="text" id="round_id_10">
+  <br>
+  <br>
+  <button onclick="get_round_user_score()">Показать баллы</button>
+  <div class="response" id="round_user_res"></div>
 
   <br><hr><br>
 
   // Можно юзать, чтобы смотреть всех пользователей
   <br>
+  <button onclick="get_users()">Показать всех пользователей</button>
+  <div class="response" id="users_res"></div>
+
+  <br><hr><br>
   // Показывает только с ненулевым рейтингом
   <button onclick="get_ratings()">Показать таблицу рейтинга</button>
   <div class="response" id="rating_res"></div>
@@ -119,6 +139,13 @@
   <input type="password" id="user_passwd3">
   <button onclick="login()">Войти</button>
   <div class="response" id="login_res"></div>
+
+  <br><hr><br>
+
+  Введи имя юзера<br>
+  <input type="text" id="del_user_nm"><br>
+  <button onclick="del_user()">Удалить юзера</button>
+  <div class="response" id="del_user_res"></div>
 
   <br><hr><br>
 

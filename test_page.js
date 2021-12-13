@@ -1,6 +1,7 @@
 
 async function show_rounds() {
-    let nowjson = await req_get_round_list();
+    let user_nm = document.getElementById('user_nm_rs').value;
+    let nowjson = await req_get_round_list(user_nm);
     document.getElementById('round_list').innerHTML = JSON.stringify(nowjson, null, '\t');
 }
 
@@ -35,6 +36,12 @@ async function add_user() {
     document.getElementById('add_user_res').innerHTML = JSON.stringify(res, null, '\t');
 }
 
+async function del_user() {
+    let user_nm = document.getElementById('del_user_nm').value;
+    let res = await req_del_user(user_nm);
+    document.getElementById('del_user_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
 async function login() {
     let user_nm = document.getElementById('user_nm2').value;
     let pswd1 = document.getElementById('user_passwd3').value;
@@ -45,6 +52,18 @@ async function login() {
 async function get_ratings() {
     let res = await req_get_rating_table();
     document.getElementById('rating_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
+async function get_round_user_score() {
+    let user_id = parseInt(document.getElementById('user_id_10').value);
+    let round_id = parseInt(document.getElementById('round_id_10').value);
+    let res = await req_get_round_user_score(user_id, round_id);
+    document.getElementById('round_user_res').innerHTML = JSON.stringify(res, null, '\t');
+}
+
+async function get_users() {
+    let res = await req_get_users();
+    document.getElementById('users_res').innerHTML = JSON.stringify(res, null, '\t');
 }
 
 async function set_score() {
